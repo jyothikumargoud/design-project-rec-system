@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Ecommerce Recommendation System</title>
+
+<link rel="stylesheet"
+href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+<style>
+
+body{
+background:#f5f6fa;
+font-family: Arial, Helvetica, sans-serif;
+}
+
+.navbar{
+box-shadow:0 3px 10px rgba(0,0,0,0.1);
+}
+
+.title{
+font-weight:700;
+color:#2f3640;
+}
+
+.search-box{
+background:white;
+padding:30px;
+border-radius:10px;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+.card{
+border:none;
+border-radius:12px;
+overflow:hidden;
+transition:0.3s;
+box-shadow:0 5px 15px rgba(0,0,0,0.08);
+}
+
+.card:hover{
+transform:translateY(-6px);
+box-shadow:0 10px 25px rgba(0,0,0,0.15);
+}
+
+.card img{
+height:200px;
+object-fit:cover;
+}
+
+.card-body{
+text-align:center;
+}
+
+.rating{
+color:#fbc531;
+}
+
+.section-title{
+font-weight:700;
+margin-bottom:30px;
+color:#2f3640;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav class="navbar navbar-light bg-white">
+
+<h4 class="mx-auto title">
+
+ Ecommerce Recommendation System
+
+</h4>
+
+</nav>
+
+
+<!-- SEARCH -->
+
+<div class="container mt-5">
+
+<div class="search-box">
+
+<h4 class="text-center mb-4">
+
+🔍 Search Products
+
+</h4>
+
+<form method="POST">
+
+<div class="form-row justify-content-center">
+
+<input
+type="text"
+class="form-control col-md-5 mr-2"
+name="product"
+placeholder="Enter product name..."
+required
+>
+
+<input
+type="number"
+class="form-control col-md-2 mr-2"
+name="number"
+placeholder="Results"
+required
+>
+
+<button class="btn btn-primary">
+
+Search
+
+</button>
+
+</div>
+
+</form>
+
+</div>
+
+</div>
+
+
+<!-- ERROR MESSAGE -->
+
+{% if message %}
+
+<div class="container mt-3 text-center">
+
+<div class="alert alert-danger">
+
+{{message}}
+
+</div>
+
+</div>
+
+{% endif %}
+
+
+
+
+
+
+
+<!-- RECOMMENDATIONS -->
+
+{% if products is not none %}
+
+<div class="container mt-5">
+
+<h3 class="text-center section-title">
+
+ Recommended For You
+
+</h3>
+
+<div class="row">
+
+{% for index, product in products.iterrows() %}
+
+<div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+
+<div class="card">
+
+<img src="https://via.placeholder.com/200">
+
+<div class="card-body">
+
+<h6>
+
+{{product['Name']}}
+
+</h6>
+
+<p class="text-muted">
+
+Brand: {{product['Brand']}}
+
+</p>
+
+<div class="rating">
+
+ {{product['Rating']}}
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+</div>
+
+{% endif %}
+
+
+<!-- FOOTER -->
+
+<footer class="text-center mt-5 mb-4 text-muted">
+
+© 2026 Ecommerce Recommendation System
+
+</footer>
+
+
+
+
+<!-- TRENDING PRODUCTS -->
+
+<div class="container mt-5">
+
+<h3 class="text-center section-title">
+
+ Trending Products
+
+</h3>
+
+<div class="row">
+
+{% for index, product in trending_products.iterrows() %}
+
+<div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+
+<div class="card">
+
+<img src="{{ random_product_image_urls[index] }}">
+
+<div class="card-body">
+
+<h6>
+
+{{ truncate(product['Name'],14) }}
+
+</h6>
+
+<p class="text-muted">
+
+Brand: {{ product['Brand'] }}
+
+</p>
+
+<div class="rating">
+
+<i class="fas fa-star"></i>
+<i class="fas fa-star"></i>
+<i class="fas fa-star"></i>
+<i class="fas fa-star"></i>
+<i class="fas fa-star-half-alt"></i>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+</div>
+
+
+</body>
+
+</html>
