@@ -47,10 +47,10 @@ def recommend_products(product_name, n=5):
 
     product_indices = [i[0] for i in scores]
 
-    return data.iloc[product_indices][["Name","Brand","Rating"]]
+    return data.iloc[product_indices][["Name", "Brand", "Rating"]]
 
 
-@app.route("/", methods=["GET","POST"])
+@app.route("/", methods=["GET", "POST"])
 def home():
 
     recommendations = None
@@ -66,6 +66,8 @@ def home():
         if results.empty:
             message = "Product not found"
         else:
+            results = results.copy()
+            results["image"] = [random.choice(images) for _ in range(len(results))]
             recommendations = results
 
     random_images = [random.choice(images) for _ in range(len(trending_products))]
