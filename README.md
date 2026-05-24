@@ -1,37 +1,106 @@
-# E-Commerece-Recommendation-System-Machine-Learning-Product-Recommendation-system-
+# 🛒 E-Commerce Recommendation System
 
-Building an E-Commerce Recommendation System with Flask and Machine Learning
+A machine learning-powered product recommendation web app built with Flask and scikit-learn. Users can search for any product and get personalized recommendations based on content similarity.
 
-Introduction: 
-In today's digital era, e-commerce platforms are becoming increasingly popular, offering a vast array of products to consumers worldwide. However, with the abundance of choices, it can be overwhelming for users to find products that match their preferences. To address this challenge, implementing a recommendation system can significantly enhance the user experience by providing personalized product suggestions. In this article, we'll explore the process of building an e-commerce recommendation system using Flask and machine learning techniques, including content-based, collaborative filtering, hybrid, and multi-model recommendations.
-Understanding Recommendation Systems:
+---
 
-Recommendation systems are algorithms designed to predict user preferences and suggest items that they are likely to enjoy.
-There are several types of recommendation systems, including content-based, collaborative filtering, and hybrid approaches.
-Content-based recommendation systems analyze item attributes and user preferences to recommend similar items.
-Collaborative filtering recommendation systems rely on user behavior data, such as ratings and interactions, to make predictions.
-Hybrid recommendation systems combine multiple approaches to provide more accurate and diverse recommendations.
-Multi-model recommendation systems leverage different machine learning models to cater to various user preferences and item characteristics.
+## 🧠 How It Works
 
-Building the Recommendation System:
+1. Product data is loaded from a cleaned Walmart dataset
+2. A **TF-IDF Vectorizer** converts product tags into numerical vectors
+3. **Cosine Similarity** finds the most similar products
+4. Results are displayed in a clean responsive UI built with Bootstrap
 
-We'll start by collecting and preprocessing the e-commerce dataset, including product attributes, user ratings, and interactions.
-Next, we'll implement content-based recommendation algorithms to suggest products based on their features and user preferences.
-We'll then develop collaborative filtering models using techniques like matrix factorization and neighborhood-based methods to predict user-item interactions.
-To enhance recommendation accuracy and coverage, we'll create hybrid models that combine content-based and collaborative filtering approaches.
-Additionally, we'll explore multi-model recommendation strategies, integrating multiple machine learning models to provide diverse recommendations.
-Throughout the development process, we'll utilize Python libraries such as NumPy, pandas, scikit-learn, and TensorFlow for data manipulation, model training, and evaluation.
+---
 
-Integrating with Flask and E-Commerce Website:
+## 🗂️ Project Structure
 
-After building the recommendation system, we'll integrate it with a Flask web application to provide a user-friendly interface.
-The Flask application will include features such as user registration, product browsing, search functionality, and recommendation display.
-We'll leverage Flask's routing capabilities to handle user requests and render dynamic web pages with personalized recommendations.
-Furthermore, we'll implement user authentication and session management to ensure a secure and seamless browsing experience.
-The e-commerce website will feature product cards displaying essential information, including images, descriptions, prices, and ratings.
-Users will have the option to interact with the recommendation system by providing feedback, such as ratings and likes, to improve future recommendations.
+design-project-rec-system/
+├── app.py                  → Flask backend and recommendation logic
+├── templates/
+│   └── index.html          → Frontend UI
+├── static/
+│   └── img_1-8.png         → Product images
+├── models/
+│   └── clean_data.csv      → Cleaned product dataset
+├── trending_products.csv   → Trending products for homepage
+├── requirements.txt        → Python dependencies
+└── README.md               → Project documentation
 
-Conclusion: 
-Building an e-commerce recommendation system with Flask and machine learning techniques offers numerous benefits, including enhanced user engagement, increased sales, and improved customer satisfaction. By leveraging content-based, collaborative filtering, hybrid, and multi-model recommendation approaches, businesses can deliver personalized product suggestions tailored to individual user preferences. Integrating the recommendation system with a Flask-based e-commerce website provides a seamless shopping experience, empowering users to discover relevant products efficiently. As e-commerce continues to evolve, implementing advanced recommendation systems remains a valuable strategy for driving growth and fostering customer loyalty in the digital marketplace.
-By following this comprehensive guide, developers can embark on their journey to create sophisticated recommendation systems and elevate the e-commerce experience for users worldwide.
-# design-project-rec-system
+---
+
+## ⚙️ Setup Instructions
+
+### 1. Clone the repository
+```bash
+git clone https://github.com/kn-keerthana/design-project-rec-system.git
+cd design-project-rec-system
+```
+
+### 2. Create and activate a virtual environment
+```bash
+python -m venv venv
+source venv/Scripts/activate
+```
+
+### 3. Install dependencies
+```bash
+pip install -r requirements.txt
+```
+
+### 4. Run the app
+```bash
+python app.py
+```
+
+### 5. Open in browser
+http://127.0.0.1:5001
+
+---
+
+## 🔍 How to Use
+
+1. Type a full product name in the search box
+2. Enter the number of recommendations you want
+3. Click **Search**
+4. View personalized recommendations below
+
+### Example search:
+OPI Infinite Shine, Nail Lacquer Nail Polish, Bubble Bath
+
+---
+
+## 🛠️ Tech Stack
+
+| Layer | Technology |
+|---|---|
+| Backend | Python, Flask |
+| ML | scikit-learn, TF-IDF, Cosine Similarity |
+| Data | pandas, Walmart product dataset |
+| Frontend | HTML, Bootstrap 4, Font Awesome |
+
+---
+
+## 📦 Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+Key libraries:
+- `flask` — web framework
+- `pandas` — data manipulation
+- `scikit-learn` — TF-IDF vectorizer and cosine similarity
+
+---
+
+## 🙌 Contributors
+
+- [@jyothikumargoud](https://github.com/jyothikumargoud)
+- [@kn-keerthana](https://github.com/kn-keerthana)
+
+---
+
+## 📄 License
+
+This project is for educational purposes.
